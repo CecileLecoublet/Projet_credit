@@ -9,12 +9,10 @@ showPyplotGlobalUse = False
 # Quatrième chapitre
 def quatrieme_chapitre(data, val):
     st.markdown("## Quatrième chapitre : Note Appartement / Ville / Régions")
-    st.markdown("Dans ce chapitre, les notes des clients sur leur appartement,\
-                ville et régions seront consignées. Note interne et externe.\
-                 Une note élevée montre une ville avec beaucoup de population, une ville active.")
-    st.write("Score normalisé à partir d'une source de données externe")
+    st.write("Score normalisé à partir d'une source de données externe,\
+            ce sont des notes importantes qui ont un poids pour savoir si le client est à risque ou pas")
     # Construction tableau
-    prov = data[["EXT_SOURCE_1", "EXT_SOURCE_2", "EXT_SOURCE_3"]].copy()
+    prov = data[["EXT_SOURCE_1 > 0.09", "EXT_SOURCE_2 =< 0.54", "EXT_SOURCE_3 =< 0.50"]].copy()
     prov.rename(index = {0: 'Note'}, inplace = True) 
     # Seuil
     seuil = pd.DataFrame([0.50,0.54,0.09])

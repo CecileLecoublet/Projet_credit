@@ -4,7 +4,7 @@ import pandas as pd
 from Age_client import age_client
 from Statut_client import graphique
 from Note_ext import quatrieme_chapitre
-# from Feat_globale import load_model, fc_global
+from Feat_globale import load_model, fc_global
 import plotly.express as px
 from matplotlib import pyplot as plt
 import lime
@@ -16,8 +16,8 @@ def ouverture_data() :
     tab = pd.read_csv("X_test.csv")
     read_and_cache_csv = st.cache(pd.read_csv)
     df = read_and_cache_csv("X_test_scaled.csv")
-    # X_train_scaled = read_and_cache_csv("X_train_scaled.csv")
-    return tab, df
+    X_train_scaled = read_and_cache_csv("X_train_scaled.csv")
+    return tab, df, X_train_scaled
 
 # Choix du vient et division des data
 def choix_client():
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     st.title('Dashboard : Prédiction de crédit')
 
     # Ouverture des data
-    tab, df = ouverture_data()
+    tab, df, X_train_scaled = ouverture_data()
 
     # Premier chapitre
     # Choix du client
@@ -76,4 +76,4 @@ if __name__ == '__main__':
 
     # # Cinquième chapitre
     # # Information features gloable
-    # fc_global(df, X_train_scaled, choix)
+    fc_global(df, X_train_scaled, choix)
