@@ -10,7 +10,7 @@ showPyplotGlobalUse = False
 
 # Chargement du modèle
 def load_model():
-    pickle_in = open("../mlflow_model/model.pkl","rb")
+    pickle_in = open("mlflow_model/model.pkl","rb")
     clf = pickle.load(pickle_in)
     return clf
 
