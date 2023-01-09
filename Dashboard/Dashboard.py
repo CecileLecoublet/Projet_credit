@@ -37,7 +37,7 @@ def client_api(df):
     headers = {
         'Content-Type' : 'application/json'
     }
-    url = "http://127.0.0.1:8000/predict?data="+payload
+    url = "https://projet7credit.herokuapp.com/predict?data="+payload
     response = requests.post(url)
     if response.json() == 0 :
         rep = 0
