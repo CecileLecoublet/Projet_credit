@@ -11,7 +11,7 @@ pickle_in = open("mlflow_model/model.pkl","rb")
 classifier=pickle.load(pickle_in)
 
 # Ouverture des fichiers
-df = pd.read_csv("../X_test_scaled.csv")
+df = pd.read_csv("X_test_scaled.csv")
 
 # 3. Index route, opens automatically on http://127.0.0.1:8000
 @app.get('/')
