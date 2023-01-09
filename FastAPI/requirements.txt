@@ -1,0 +1,9 @@
+uvicorn
+gunicorn
+fastapi 
+pandas
+lightgbm 
+python-multipart
+plotly.express
+matplotlib
+lime

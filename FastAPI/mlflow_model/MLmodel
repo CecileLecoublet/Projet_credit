@@ -1,0 +1,84 @@
+flavors:
+  python_function:
+    env: conda.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    python_version: 3.9.12
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.1.2
+mlflow_version: 1.28.0
+model_uuid: c3dd0422802f4efa8f44807380ae86af
+signature:
+  inputs: '[{"name": "SK_ID_CURR", "type": "double"}, {"name": "NAME_CONTRACT_TYPE",
+    "type": "double"}, {"name": "CODE_GENDER", "type": "double"}, {"name": "FLAG_OWN_CAR",
+    "type": "double"}, {"name": "FLAG_OWN_REALTY", "type": "double"}, {"name": "CNT_CHILDREN",
+    "type": "double"}, {"name": "AMT_INCOME_TOTAL", "type": "double"}, {"name": "AMT_CREDIT",
+    "type": "double"}, {"name": "AMT_ANNUITY", "type": "double"}, {"name": "AMT_GOODS_PRICE",
+    "type": "double"}, {"name": "NAME_TYPE_SUITE", "type": "double"}, {"name": "NAME_INCOME_TYPE",
+    "type": "double"}, {"name": "NAME_EDUCATION_TYPE", "type": "double"}, {"name":
+    "NAME_FAMILY_STATUS", "type": "double"}, {"name": "NAME_HOUSING_TYPE", "type":
+    "double"}, {"name": "REGION_POPULATION_RELATIVE", "type": "double"}, {"name":
+    "DAYS_BIRTH", "type": "double"}, {"name": "DAYS_EMPLOYED", "type": "double"},
+    {"name": "DAYS_REGISTRATION", "type": "double"}, {"name": "DAYS_ID_PUBLISH", "type":
+    "double"}, {"name": "OWN_CAR_AGE", "type": "double"}, {"name": "FLAG_MOBIL", "type":
+    "double"}, {"name": "FLAG_EMP_PHONE", "type": "double"}, {"name": "FLAG_WORK_PHONE",
+    "type": "double"}, {"name": "FLAG_CONT_MOBILE", "type": "double"}, {"name": "FLAG_PHONE",
+    "type": "double"}, {"name": "FLAG_EMAIL", "type": "double"}, {"name": "OCCUPATION_TYPE",
+    "type": "double"}, {"name": "CNT_FAM_MEMBERS", "type": "double"}, {"name": "REGION_RATING_CLIENT",
+    "type": "double"}, {"name": "REGION_RATING_CLIENT_W_CITY", "type": "double"},
+    {"name": "WEEKDAY_APPR_PROCESS_START", "type": "double"}, {"name": "HOUR_APPR_PROCESS_START",
+    "type": "double"}, {"name": "REG_REGION_NOT_LIVE_REGION", "type": "double"}, {"name":
+    "REG_REGION_NOT_WORK_REGION", "type": "double"}, {"name": "LIVE_REGION_NOT_WORK_REGION",
+    "type": "double"}, {"name": "REG_CITY_NOT_LIVE_CITY", "type": "double"}, {"name":
+    "REG_CITY_NOT_WORK_CITY", "type": "double"}, {"name": "LIVE_CITY_NOT_WORK_CITY",
+    "type": "double"}, {"name": "ORGANIZATION_TYPE", "type": "double"}, {"name": "EXT_SOURCE_1",
+    "type": "double"}, {"name": "EXT_SOURCE_2", "type": "double"}, {"name": "EXT_SOURCE_3",
+    "type": "double"}, {"name": "APARTMENTS_AVG", "type": "double"}, {"name": "BASEMENTAREA_AVG",
+    "type": "double"}, {"name": "YEARS_BEGINEXPLUATATION_AVG", "type": "double"},
+    {"name": "YEARS_BUILD_AVG", "type": "double"}, {"name": "COMMONAREA_AVG", "type":
+    "double"}, {"name": "ELEVATORS_AVG", "type": "double"}, {"name": "ENTRANCES_AVG",
+    "type": "double"}, {"name": "FLOORSMAX_AVG", "type": "double"}, {"name": "FLOORSMIN_AVG",
+    "type": "double"}, {"name": "LANDAREA_AVG", "type": "double"}, {"name": "LIVINGAPARTMENTS_AVG",
+    "type": "double"}, {"name": "LIVINGAREA_AVG", "type": "double"}, {"name": "NONLIVINGAPARTMENTS_AVG",
+    "type": "double"}, {"name": "NONLIVINGAREA_AVG", "type": "double"}, {"name": "APARTMENTS_MODE",
+    "type": "double"}, {"name": "BASEMENTAREA_MODE", "type": "double"}, {"name": "YEARS_BEGINEXPLUATATION_MODE",
+    "type": "double"}, {"name": "YEARS_BUILD_MODE", "type": "double"}, {"name": "COMMONAREA_MODE",
+    "type": "double"}, {"name": "ELEVATORS_MODE", "type": "double"}, {"name": "ENTRANCES_MODE",
+    "type": "double"}, {"name": "FLOORSMAX_MODE", "type": "double"}, {"name": "FLOORSMIN_MODE",
+    "type": "double"}, {"name": "LANDAREA_MODE", "type": "double"}, {"name": "LIVINGAPARTMENTS_MODE",
+    "type": "double"}, {"name": "LIVINGAREA_MODE", "type": "double"}, {"name": "NONLIVINGAPARTMENTS_MODE",
+    "type": "double"}, {"name": "NONLIVINGAREA_MODE", "type": "double"}, {"name":
+    "APARTMENTS_MEDI", "type": "double"}, {"name": "BASEMENTAREA_MEDI", "type": "double"},
+    {"name": "YEARS_BEGINEXPLUATATION_MEDI", "type": "double"}, {"name": "YEARS_BUILD_MEDI",
+    "type": "double"}, {"name": "COMMONAREA_MEDI", "type": "double"}, {"name": "ELEVATORS_MEDI",
+    "type": "double"}, {"name": "ENTRANCES_MEDI", "type": "double"}, {"name": "FLOORSMAX_MEDI",
+    "type": "double"}, {"name": "FLOORSMIN_MEDI", "type": "double"}, {"name": "LANDAREA_MEDI",
+    "type": "double"}, {"name": "LIVINGAPARTMENTS_MEDI", "type": "double"}, {"name":
+    "LIVINGAREA_MEDI", "type": "double"}, {"name": "NONLIVINGAPARTMENTS_MEDI", "type":
+    "double"}, {"name": "NONLIVINGAREA_MEDI", "type": "double"}, {"name": "FONDKAPREMONT_MODE",
+    "type": "double"}, {"name": "HOUSETYPE_MODE", "type": "double"}, {"name": "TOTALAREA_MODE",
+    "type": "double"}, {"name": "WALLSMATERIAL_MODE", "type": "double"}, {"name":
+    "EMERGENCYSTATE_MODE", "type": "double"}, {"name": "OBS_30_CNT_SOCIAL_CIRCLE",
+    "type": "double"}, {"name": "DEF_30_CNT_SOCIAL_CIRCLE", "type": "double"}, {"name":
+    "OBS_60_CNT_SOCIAL_CIRCLE", "type": "double"}, {"name": "DEF_60_CNT_SOCIAL_CIRCLE",
+    "type": "double"}, {"name": "DAYS_LAST_PHONE_CHANGE", "type": "double"}, {"name":
+    "FLAG_DOCUMENT_2", "type": "double"}, {"name": "FLAG_DOCUMENT_3", "type": "double"},
+    {"name": "FLAG_DOCUMENT_4", "type": "double"}, {"name": "FLAG_DOCUMENT_5", "type":
+    "double"}, {"name": "FLAG_DOCUMENT_6", "type": "double"}, {"name": "FLAG_DOCUMENT_7",
+    "type": "double"}, {"name": "FLAG_DOCUMENT_8", "type": "double"}, {"name": "FLAG_DOCUMENT_9",
+    "type": "double"}, {"name": "FLAG_DOCUMENT_10", "type": "double"}, {"name": "FLAG_DOCUMENT_11",
+    "type": "double"}, {"name": "FLAG_DOCUMENT_12", "type": "double"}, {"name": "FLAG_DOCUMENT_13",
+    "type": "double"}, {"name": "FLAG_DOCUMENT_14", "type": "double"}, {"name": "FLAG_DOCUMENT_15",
+    "type": "double"}, {"name": "FLAG_DOCUMENT_16", "type": "double"}, {"name": "FLAG_DOCUMENT_17",
+    "type": "double"}, {"name": "FLAG_DOCUMENT_18", "type": "double"}, {"name": "FLAG_DOCUMENT_19",
+    "type": "double"}, {"name": "FLAG_DOCUMENT_20", "type": "double"}, {"name": "FLAG_DOCUMENT_21",
+    "type": "double"}, {"name": "AMT_REQ_CREDIT_BUREAU_HOUR", "type": "double"}, {"name":
+    "AMT_REQ_CREDIT_BUREAU_DAY", "type": "double"}, {"name": "AMT_REQ_CREDIT_BUREAU_WEEK",
+    "type": "double"}, {"name": "AMT_REQ_CREDIT_BUREAU_MON", "type": "double"}, {"name":
+    "AMT_REQ_CREDIT_BUREAU_QRT", "type": "double"}, {"name": "AMT_REQ_CREDIT_BUREAU_YEAR",
+    "type": "double"}, {"name": "DAYS_EMPLOYED_OUTLIERS", "type": "double"}]'
+  outputs: '[{"name": "TARGET", "type": "long"}]'
+utc_time_created: '2023-01-02 14:16:42.510269'
