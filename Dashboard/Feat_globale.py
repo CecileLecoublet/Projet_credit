@@ -44,6 +44,6 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     tableau = pd.DataFrame(results)
     tableau.columns = ["Features", "Val_min", "Val_max", "Val"]
     # Affichage du graphique
-    fig = px.scatter(tableau, x = "Features", y = ["Val_min", "Val_max", "Val"])
+    fig = px.scatter(tableau, x = "Features", y = ["Val_min", "Val_max", "Val"], color=["blue", "red", "green"])
     st.write(fig)
     
