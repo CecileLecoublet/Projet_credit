@@ -15,7 +15,7 @@ def quatrieme_chapitre(data, val):
     prov = data[["EXT_SOURCE_1", "EXT_SOURCE_2", "EXT_SOURCE_3"]].copy()
     prov.rename(index = {0: 'Note'}, inplace = True) 
     # Seuil
-    seuil = pd.DataFrame([0.50,0.54,0.09])
+    seuil = pd.DataFrame([0.50,0.54,0.009])
     # Renommer ligne et colonne
     seuil.index = prov.columns
     seuil = seuil.T
