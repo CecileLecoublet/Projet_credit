@@ -7,3 +7,4 @@ python-multipart
 plotly.express
 matplotlib
 lime
+ipython
