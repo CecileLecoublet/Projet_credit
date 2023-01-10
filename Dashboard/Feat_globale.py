@@ -5,6 +5,7 @@ import pandas as pd
 import lime
 from lime import lime_tabular
 import pickle
+import eli5
 st.set_option('deprecation.showPyplotGlobalUse', False)
 showPyplotGlobalUse = False
 
@@ -37,4 +38,5 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     exp.show_in_notebook(show_table=True)
     # Affichage du tableau
     st.write(pd.DataFrame(exp.as_list()))
+    st.xrite(eli5.show_weights(load_model().named_steps["LR"], feature_names=pd.DataFrame(exp.as_list()).columns))
     
