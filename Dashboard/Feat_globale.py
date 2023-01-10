@@ -45,5 +45,5 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     tableau.columns = ["Features", "Val_min", "Val_max", "Val"]
     # Affichage du graphique
     fig = px.scatter(tableau, x = "Features", y = ["Val_min", "Val_max", "Val"])
-    st.write(fig.show())
+    st.write(fig)
     
