@@ -32,6 +32,6 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     # plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
     # plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
     st.pyplot(fig_1)
-    st.pyplot(fig_2)
+    st.write(fig_2)
 
     
