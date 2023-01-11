@@ -27,4 +27,6 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.set_option('deprecation.showPyplotGlobalUse', False)
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
+    fig_1 = shap.plots.beeswarm(shap_values.sample(50))
+    st.pyplot(fig_1)
     
