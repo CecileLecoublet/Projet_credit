@@ -32,7 +32,7 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     fig_2 = px.scatter(prov['AMT_GOODS_PRICE'])
     # plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
     # plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
-    st.pyplot(fig_1)
+    st.write(fig_1)
     st.write(fig_2)
 
     
