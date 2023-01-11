@@ -10,7 +10,7 @@ flavors:
     serialization_format: cloudpickle
     sklearn_version: 1.1.2
 mlflow_version: 1.28.0
-model_uuid: 649a223b3f594981b93baf8d067077fb
+model_uuid: 68891a4fbdfc4800b160e7d9599caa35
 signature:
   inputs: '[{"name": "SK_ID_CURR", "type": "double"}, {"name": "NAME_CONTRACT_TYPE",
     "type": "double"}, {"name": "CODE_GENDER", "type": "double"}, {"name": "FLAG_OWN_CAR",
@@ -81,4 +81,4 @@ signature:
     "AMT_REQ_CREDIT_BUREAU_QRT", "type": "double"}, {"name": "AMT_REQ_CREDIT_BUREAU_YEAR",
     "type": "double"}, {"name": "DAYS_EMPLOYED_OUTLIERS", "type": "double"}]'
   outputs: '[{"name": "TARGET", "type": "long"}]'
-utc_time_created: '2023-01-09 16:24:38.742899'
+utc_time_created: '2023-01-11 08:40:39.637960'
