@@ -22,7 +22,7 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     # Entraînement
     explainer = shap.Explainer(load_model().predict, X_test_scaled)
     # Calculates the SHAP values - It takes some time
-    shap_values = explainer(X_test_scaled)
+    shap_values = explainer.shap_values(X_test_scaled)
     # Evaluate SHAP values
     st.write(shap_values)
     
