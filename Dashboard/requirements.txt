@@ -11,3 +11,4 @@ python-multipart
 plotly.express
 lime
 ipython
+shap
