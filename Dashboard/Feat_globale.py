@@ -34,5 +34,6 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.pyplot(fig_1)
     st.write(fig_2)
     st.write(X_test_scaled['AMT_GOODS_PRICE'])
+    st.write(choix)
 
     
