@@ -21,7 +21,7 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.markdown("## Cinquième chapitre : Features global et features local")
     # Entraînement
     shap.initjs()
-    explainer = shap.Explainer(load_model().predict, X_test_scaled)
+    explainer = shap.TreeExplainer(load_model().predict, X_test_scaled)
     # Calculates the SHAP values - It takes some time
     shap_values = explainer(X_test_scaled)
     # Evaluate SHAP values
