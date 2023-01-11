@@ -27,8 +27,9 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.set_option('deprecation.showPyplotGlobalUse', False)
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
-    shap.dependence_plot('AMT_GOODS_PRICE', shap_values[1], X_test_scaled, interaction_index="AMT_GOODS_PRICE",alpha=0.4,show=False)
-    plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
-    plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
-    plt.show()
+    fig_1 = shap.dependence_plot('AMT_GOODS_PRICE', shap_values[1], X_test_scaled, interaction_index="AMT_GOODS_PRICE",alpha=0.4,show=False)
+    # plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
+    # plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
+    st.pyplot(fig_1)
+    
     
