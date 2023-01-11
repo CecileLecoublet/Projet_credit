@@ -30,8 +30,7 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     position_colonne = X_test_scaled.columns.get_loc("AMT_GOODS_PRICE")
     px.scatter(shap_values[0][position_colonne])
     prov = X_test_scaled[X_test_scaled["SK_ID_CURR"] == choix]
-    f, ax = plt.subplots()
-    ax.scatter(prov['AMT_GOODS_PRICE'], color = 'black' , s= 50)
+    px.scatter(prov['AMT_GOODS_PRICE'], color_discrete_sequence=['black'])
     # plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
     # plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
     st.write(plt.show())
