@@ -27,8 +27,7 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.set_option('deprecation.showPyplotGlobalUse', False)
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
-    f, ax = plt.subplots()
-    fig_1 = ax.scatter(X_test_scaled['AMT_GOODS_PRICE'], X_test_scaled['AMT_GOODS_PRICE'], c=X_test_scaled["AMT_GOODS_PRICE"])
+    fig_1 = px.scatter(X_test_scaled['AMT_GOODS_PRICE'])
     prov = X_test_scaled[X_test_scaled["SK_ID_CURR"] == choix]
     fig_2 = px.scatter(prov['AMT_GOODS_PRICE'])
     # plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
