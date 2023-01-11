@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import shap
 import pickle
-import re
+import plotly.graph_objs as go
 import plotly.express as px
 st.set_option('deprecation.showPyplotGlobalUse', False)
 showPyplotGlobalUse = False
@@ -29,10 +29,8 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.pyplot(fig)
     fig_1 = shap.dependence_plot('AMT_GOODS_PRICE', shap_values[0], X_test_scaled, interaction_index="AMT_GOODS_PRICE",show=False)
     prov = X_test_scaled[X_test_scaled["SK_ID_CURR"] == choix]
-    fig_1.add_traces.scatter(prov['AMT_GOODS_PRICE'])
+    fig_1.add_traces(go.Scatter(prov['AMT_GOODS_PRICE']))
     # plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
     # plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
     st.pyplot(fig_1)
-    st.write(fig_2)
-
     
