@@ -1,11 +1,14 @@
+ matplotlib==3.5.2
+ streamlit==1.10.0
+ pandas==1.4.2
+ Pillow==9.1.1
+ numpy==1.22.4
 uvicorn
 gunicorn
 fastapi 
-pandas
 lightgbm 
 python-multipart
 plotly.express
-matplotlib
 lime
 ipython
 re
