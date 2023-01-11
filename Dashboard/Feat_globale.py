@@ -28,13 +28,11 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
     position_colonne = X_test_scaled.columns.get_loc("AMT_GOODS_PRICE")
-    st.write(shap_values[0][0])
-    st.write(shap_values[0][1])
-    fig_1 = px.scatter(shap_values[0])
+    fig_1 = px.scatter(shap_values[0][position_colonne])
     prov = X_test_scaled[X_test_scaled["SK_ID_CURR"] == choix]
     fig_2 = px.scatter(prov['AMT_GOODS_PRICE'], color_discrete_sequence=['white'], width = 500)
-    # plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
-    # plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
+    plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
+    plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
     st.write(fig_1.add_trace(fig_2.data[0]))
 
     
