@@ -27,13 +27,12 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.set_option('deprecation.showPyplotGlobalUse', False)
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
-    fig_1 = px.scatter(shap_values[0][12])
-    st.write(X_test_scaled.columns.get_loc("AMT_GOODS_PRICE"))
+    position_colonne = X_test_scaled.columns.get_loc("AMT_GOODS_PRICE")
+    px.scatter(shap_values[0][position_colonne])
     prov = X_test_scaled[X_test_scaled["SK_ID_CURR"] == choix]
-    fig_2 = px.scatter(prov['AMT_GOODS_PRICE'])
+    px.scatter(prov['AMT_GOODS_PRICE'], color= 'black' , s= 50)
     # plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
     # plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
-    st.write(fig_1)
-    st.write(fig_2)
+    st.write(plt.show())
 
     
