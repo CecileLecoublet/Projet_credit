@@ -79,5 +79,5 @@ if __name__ == '__main__':
     # Information features gloable
     fc_global(df, X_train_scaled, choix)
 
-    # Test
-    fesatures_importante(data, tab_1, X_train_scaled, choix)
+    # # Test
+    # fesatures_importante(data, tab_1, X_train_scaled, choix)
