@@ -5,6 +5,7 @@ from Age_client import age_client
 from Statut_client import graphique
 from Note_ext import quatrieme_chapitre
 from Feat_globale import load_model, fc_global
+from test import fesatures_importante
 import plotly.express as px
 from matplotlib import pyplot as plt
 import lime
@@ -74,6 +75,9 @@ if __name__ == '__main__':
     # Note extérieure
     quatrieme_chapitre(tab_1, choix)
 
-    # # Cinquième chapitre
-    # # Information features gloable
+    # Cinquième chapitre
+    # Information features gloable
     fc_global(df, X_train_scaled, choix)
+
+    # Test
+    fesatures_importante(data, tab_1, X_train_scaled, choix)
