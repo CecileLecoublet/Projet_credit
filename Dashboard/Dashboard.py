@@ -5,7 +5,6 @@ from Age_client import age_client
 from Statut_client import graphique
 from Note_ext import quatrieme_chapitre
 from Feat_globale import load_model, fc_global
-from test import fesatures_importante
 import plotly.express as px
 from matplotlib import pyplot as plt
 import lime
