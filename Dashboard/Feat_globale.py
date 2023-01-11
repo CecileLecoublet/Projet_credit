@@ -20,7 +20,7 @@ def load_model():
 def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.markdown("## Cinquième chapitre : Features global et features local")
     # Entraînement
-    explainer = shap.TreeExplainer(load_model())
+    explainer = shap.Explainer(load_model())
     # Calculates the SHAP values - It takes some time
     shap_values = explainer.shap_values(X_test_scaled)
     # Evaluate SHAP values
