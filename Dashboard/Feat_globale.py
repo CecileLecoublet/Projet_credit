@@ -39,6 +39,9 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
     imp_cols = X_train_scaled.abs().mean().sort_values(ascending=False).index.tolist()
+    st.write(X_test.shape)
+    st.write(X_test_scaled.shape)
+    st.write(X_train_scaled.shape)
     j = 0
     shap_values_train = explainer.shap_values(X_train_scaled)
     for i in range(0, len(imp_cols)):
