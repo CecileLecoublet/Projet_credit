@@ -12,3 +12,4 @@ plotly.express
 lime
 ipython
 shap
+seaborn
