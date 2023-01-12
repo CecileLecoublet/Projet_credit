@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import shap
 import pickle
-import re
+import seaborn as sns
 import plotly.express as px
 st.set_option('deprecation.showPyplotGlobalUse', False)
 showPyplotGlobalUse = False
@@ -14,6 +14,17 @@ def load_model():
     pickle_in = open("mlflow_model/model.pkl","rb")
     clf = pickle.load(pickle_in)
     return clf
+
+# Shap garphique
+def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y):
+    cmap=sns.diverging_palette(260, 10, sep=1, as_cmap=True) #seaborn palette
+    f, ax = plt.subplots()
+    points = ax.scatter(base_actual_df[col], base_shap_df, c=base_actual_df[color_by], s=20, cmap=cmap)
+    f.colorbar(points).set_label(color_by)
+    ax.scatter(overlay_x, overlay_y, color='black', s=50)
+    plt.xlabel(col)
+    plt.ylabel("SHAP value for " + col)
+    plt.show()
 
 # Statut globale
 # Cinquième chapitre
@@ -27,16 +38,16 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     st.set_option('deprecation.showPyplotGlobalUse', False)
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
-    test = shap.dependence_plot("AMT_GOODS_PRICE", shap_values[0], X_test_scaled, show=False)
-    st.pyplot(test)
-    # position_colonne = X_test_scaled.columns.get_loc("AMT_GOODS_PRICE")
-    fig_1 = px.scatter(X_test["AMT_GOODS_PRICE"], X_test_scaled["AMT_GOODS_PRICE"])
-    prov = X_test_scaled[X_test_scaled["SK_ID_CURR"] == choix]
-    fig_2 = px.scatter(prov['AMT_GOODS_PRICE'], color_discrete_sequence=['red'])
-    fig_2.update_traces(marker={'size': 15})
-    plt.title("Rente depence plot",loc='left',fontfamily='serif',fontsize=15)
-    plt.ylabel("SHAP value for the 'AMT_GOODS_PRICE' feature")
-    st.write(fig_1.add_trace(fig_2.data[0]))
-    st.write(test.add_trace(fig_2.data[0]))
+    imp_cols = X_train_scaled.abs().mean().sort_values(ascending=False).index.tolist()
+    j = 0
+    shap_values_train = explainer.shap_values(X_train_scaled)
+    for i in range(0, len(imp_cols)):
+        #plot the top var and color by the 2nd var
+        if i == 0 : 
+            dep_plt(i, imp_cols[i], imp_cols[0], 
+            X_train_scaled, 
+            shap_values_train[0][i],
+            X_test_scaled.iloc[j,:][imp_cols[i]], 
+            shap_values[0][i][i])
 
     
