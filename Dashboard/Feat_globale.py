@@ -51,6 +51,6 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
             X_train_scaled, 
             shap_values_train[0][i],
             X_test_scaled.iloc[j,:][imp_cols[i]], 
-            shap_values[0][i][i])
+            shap_values[0][i][0])
 
     
