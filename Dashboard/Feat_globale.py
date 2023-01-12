@@ -43,12 +43,13 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     st.write(X_test_scaled.shape)
     st.write(X_train_scaled.shape)
     j = 0
+    X_train = X_train_scaled[0:122]
     shap_values_train = explainer.shap_values(X_train_scaled)
     for i in range(0, len(imp_cols)):
         #plot the top var and color by the 2nd var
         if i == 0 : 
             dep_plt(i, imp_cols[i], imp_cols[0], 
-            X_train_scaled, 
+            X_train, 
             shap_values_train[0][i],
             X_test_scaled.iloc[j,:][imp_cols[i]], 
             shap_values[0][i][0])
