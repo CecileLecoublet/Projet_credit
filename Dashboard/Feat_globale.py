@@ -17,7 +17,7 @@ def load_model():
 
 # Statut globale
 # Cinquième chapitre
-def fc_global(X_test_scaled, X_train_scaled, choix) :
+def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     st.markdown("## Cinquième chapitre : Features global et features local")
     # Entraînement
     explainer = shap.Explainer(load_model())
@@ -30,7 +30,7 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     test = shap.dependence_plot("AMT_GOODS_PRICE", shap_values[0], X_test_scaled, show=False)
     st.pyplot(test)
     # position_colonne = X_test_scaled.columns.get_loc("AMT_GOODS_PRICE")
-    fig_1 = px.scatter(X_train_scaled["AMT_GOODS_PRICE"], X_test_scaled["AMT_GOODS_PRICE"], c=X_train_scaled["AMT_GOODS_PRICE"])
+    fig_1 = px.scatter(X_test["AMT_GOODS_PRICE"], X_test_scaled["AMT_GOODS_PRICE"], c=X_train_scaled["AMT_GOODS_PRICE"])
     prov = X_test_scaled[X_test_scaled["SK_ID_CURR"] == choix]
     fig_2 = px.scatter(prov['AMT_GOODS_PRICE'], color_discrete_sequence=['red'])
     fig_2.update_traces(marker={'size': 15})

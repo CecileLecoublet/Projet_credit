@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     # Cinquième chapitre
     # Information features gloable
-    fc_global(df, X_train_scaled, choix)
+    fc_global(df, tab, X_train_scaled, choix)
 
     # # Test
     # fesatures_importante(data, tab_1, X_train_scaled, choix)
