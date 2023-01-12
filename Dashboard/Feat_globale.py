@@ -24,7 +24,6 @@ def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y
     ax.scatter(overlay_x, overlay_y, color='black', s=50)
     plt.xlabel(col)
     plt.ylabel("SHAP value for " + col)
-    st.write(plt.show())
 
 # Statut globale
 # Cinquième chapitre
@@ -45,10 +44,11 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     for i in range(0, len(imp_cols)):
         #plot the top var and color by the 2nd var
         if i == 0 : 
-            dep_plt(i, imp_cols[i], imp_cols[0], 
+            fig = dep_plt(i, imp_cols[i], imp_cols[0], 
             X_train, 
             shap_values_train[0][i],
             X_test_scaled.iloc[j,:][imp_cols[i]], 
             shap_values[0][i][0])
+    st.write(fig)
 
     
