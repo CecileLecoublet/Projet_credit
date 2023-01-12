@@ -24,7 +24,7 @@ def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y
     ax.scatter(overlay_x, overlay_y, color='black', s=50)
     plt.xlabel(col)
     plt.ylabel("SHAP value for " + col)
-    plt.show()
+    st.write(plt.show())
 
 # Statut globale
 # Cinquième chapitre
@@ -39,9 +39,6 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
     imp_cols = X_train_scaled.abs().mean().sort_values(ascending=False).index.tolist()
-    st.write(X_test.shape)
-    st.write(X_test_scaled.shape)
-    st.write(X_train_scaled.shape)
     j = 0
     X_train = X_train_scaled[0:122]
     shap_values_train = explainer.shap_values(X_train_scaled)
