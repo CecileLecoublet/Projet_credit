@@ -27,7 +27,7 @@ def fc_global(X_test_scaled, X_train_scaled, choix) :
     st.set_option('deprecation.showPyplotGlobalUse', False)
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
-    test = shap.dependence_plot("AMT_GOODS_PRICE", shap_values, X_train_scaled, show=False)
+    test = shap.dependence_plot("AMT_GOODS_PRICE", shap_values[0], X_test_scaled, show=False)
     st.pyplot(test)
     position_colonne = X_test_scaled.columns.get_loc("AMT_GOODS_PRICE")
     fig_1 = px.scatter(shap_values[0][position_colonne])
