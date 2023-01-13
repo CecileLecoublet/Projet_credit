@@ -16,9 +16,14 @@ def load_model():
     return clf
 
 # Choix du features pour le shap et division des data
-def choix_var(X_test_scaled, shap_values):
+def choix_var(X_test_scaled, shap_values, nom):
+    st.markdown("Sur le graphique du dessus, on peut voir les features les plus importantes\
+                de manière local. Dans le graphique du dessous, on peut la position du client\
+                choisit par rapport aux autres.")
     feat = feat_imp(X_test_scaled, shap_values)
-    choix = st.selectbox("Choix du client", feat["col_name"])
+    nom = nom[feat['col_name'].to_list()]
+    nom = nom.select_dtypes(exclude = 'object')
+    choix = st.selectbox("Choix des features les plus importantes", nom["col_name"])
     var = feat[feat["col_name"] == choix]
     return var.index[0]
 
@@ -46,7 +51,7 @@ def feat_imp(X_test_scaled, shap_values):
 
 # Statut globale
 # Cinquième chapitre
-def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
+def fc_global(X_test_scaled, nom, X_train_scaled, choix) :
     st.markdown("## Cinquième chapitre : Features global et features local")
     # Entraînement
     explainer = shap.Explainer(load_model())
@@ -60,7 +65,7 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     j = 0
     X_train = X_train_scaled[0:122]
     shap_values_train = explainer.shap_values(X_train_scaled)
-    position = choix_var(X_test_scaled, shap_values)
+    position = choix_var(X_test_scaled, shap_values, nom)
     for i in range(0, len(imp_cols)):
         #plot the top var and color by the 2nd var
         if i == 0 : 

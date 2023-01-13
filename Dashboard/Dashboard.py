@@ -17,7 +17,8 @@ def ouverture_data() :
     read_and_cache_csv = st.cache(pd.read_csv)
     df = read_and_cache_csv("X_test_scaled.csv")
     X_train_scaled = read_and_cache_csv("X_train_scaled.csv")
-    return tab, df, X_train_scaled
+    nom = read_and_cache_csv("nom.csv")
+    return tab, df, X_train_scaled, nom
 
 # Choix du client et division des data
 def choix_client():
@@ -54,7 +55,7 @@ if __name__ == '__main__':
     st.title('Dashboard : Prédiction de crédit')
 
     # Ouverture des data
-    tab, df, X_train_scaled = ouverture_data()
+    tab, df, X_train_scaled, nom = ouverture_data()
 
     # Premier chapitre
     # Choix du client
@@ -76,7 +77,7 @@ if __name__ == '__main__':
 
     # Cinquième chapitre
     # Information features gloable
-    fc_global(df, tab, X_train_scaled, choix)
+    fc_global(df, tab, nom, choix)
 
     # # Test
     # fesatures_importante(data, tab_1, X_train_scaled, choix)
