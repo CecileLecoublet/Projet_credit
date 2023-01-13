@@ -20,8 +20,7 @@ def choix_var(X_test_scaled, shap_values):
     feat = feat_imp(X_test_scaled, shap_values)
     choix = st.selectbox("Choix du client", feat["col_name"])
     var = feat[feat["col_name"] == choix]
-    position_colonne = X_test_scaled.columns.get_loc(var.index[0])
-    return position_colonne
+    return var.index[0]
 
 # Shap garphique
 def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y):
