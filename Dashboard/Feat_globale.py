@@ -71,8 +71,8 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom) :
     for i in range(0, len(imp_cols)):
         #plot the top var and color by the 2nd var
         if i == 0 : 
-            fig = dep_plt(i, imp_cols[i], imp_cols[position_2], 
+            fig = dep_plt(i, imp_cols[position_1], imp_cols[position_2], 
             X_train, 
             shap_values_train[0][i],
             X_test_scaled.iloc[j,:][imp_cols[i]], 
-            shap_values[0][i][position_1])
+            shap_values[0][i][position_2])
