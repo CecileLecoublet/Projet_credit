@@ -24,7 +24,7 @@ def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y
     ax.scatter(overlay_x, overlay_y, color='black', s=50)
     plt.xlabel(col)
     plt.ylabel("SHAP value for " + col)
-    st.write(points)
+    st.pyplot(points)
 
 # Statut globale
 # Cinquième chapitre
