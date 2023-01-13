@@ -18,10 +18,10 @@ def load_model():
 # Choix du features pour le shap et division des data
 def choix_client(X_test_scaled, shap_values):
     feat = feat_imp(X_test_scaled, shap_values)
-    # Sélection du client et division des data
     choix = st.selectbox("Choix du client", feat["col_name"])
     var = feat[feat["col_name"] == choix]
-    return var
+    position_colonne = X_test_scaled.columns.get_loc(var)
+    return position_colonne
 
 # Shap garphique
 def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y):
