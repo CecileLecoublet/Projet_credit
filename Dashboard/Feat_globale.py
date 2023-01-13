@@ -16,11 +16,11 @@ def load_model():
     return clf
 
 # Choix du features pour le shap et division des data
-def choix_client(X_test_scaled, shap_values):
+def choix_var(X_test_scaled, shap_values):
     feat = feat_imp(X_test_scaled, shap_values)
     choix = st.selectbox("Choix du client", feat["col_name"])
     var = feat[feat["col_name"] == choix]
-    position_colonne = X_test_scaled.columns.get_loc(var)
+    position_colonne = X_test_scaled.columns.get_loc(var.index[0])
     return position_colonne
 
 # Shap garphique
@@ -61,7 +61,7 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     j = 0
     X_train = X_train_scaled[0:122]
     shap_values_train = explainer.shap_values(X_train_scaled)
-    position = choix_client(X_test_scaled, shap_values)
+    position = choix_var(X_test_scaled, shap_values)
     for i in range(0, len(imp_cols)):
         #plot the top var and color by the 2nd var
         if i == 0 : 
