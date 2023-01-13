@@ -27,7 +27,7 @@ def choix_var(X_test_scaled, shap_values, nom):
     #choix_2 = st.selectbox("Choix des features les plus importantes", nom.columns[nom.columns != choix])
     var = feat[feat["col_name"] == choix]
     #var_2 = feat[feat["col_name"] == choix_2]
-    position = X_test_scaled.columns.get_loc("choix")
+    position = X_test_scaled.columns.get_loc(choix)
     return position
 
 # Shap garphique
