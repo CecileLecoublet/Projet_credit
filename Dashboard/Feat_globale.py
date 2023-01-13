@@ -24,11 +24,10 @@ def choix_var(X_test_scaled, shap_values, nom):
     nom = nom[feat['col_name'].to_list()]
     nom = nom.select_dtypes(exclude = 'object')
     choix = st.selectbox("Choix des features les plus importantes", nom.columns)
-    #choix_2 = st.selectbox("Choix des features les plus importantes", nom.columns[nom.columns != choix])
-    var = feat[feat["col_name"] == choix]
-    #var_2 = feat[feat["col_name"] == choix_2]
+    choix_2 = st.selectbox("Choix des features les plus importantes", nom.columns[nom.columns != choix])
     position = X_test_scaled.columns.get_loc(choix)
-    return position, choix
+    position_2 = X_test_scaled.columns.get_loc(choix_2)
+    return position, choix, choix_2
 
 # Shap garphique
 def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y):
@@ -68,11 +67,11 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom) :
     j = 0
     X_train = X_train_scaled[0:122]
     shap_values_train = explainer.shap_values(X_train_scaled)
-    position_1, choix = choix_var(X_test_scaled, shap_values, nom)
+    position_1, choix, choix_2 = choix_var(X_test_scaled, shap_values, nom)
     for i in range(0, len(imp_cols)):
         #plot the top var and color by the 2nd var
         if i == 0 : 
-            fig = dep_plt(i, choix, choix, 
+            fig = dep_plt(i, choix, choix_2, 
             X_train, 
             shap_values_train[0][i],
             X_test_scaled.iloc[j,:][imp_cols[i]], 
