@@ -25,7 +25,7 @@ def choix_var(X_test_scaled, shap_values, nom):
     nom = nom.select_dtypes(exclude = 'object')
     choix = st.selectbox("Choix des features les plus importantes", nom.columns)
     st.write("Une autre sélection de features")
-    choix_2 = st.button("Choix des features les plus importantes", nom.columns)
+    choix_2 = st.button(feat['col_name'].to_list())
     position = X_test_scaled.columns.get_loc(choix)
     return position, choix, choix_2
 
