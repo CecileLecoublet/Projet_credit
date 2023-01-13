@@ -23,7 +23,7 @@ def choix_var(X_test_scaled, shap_values, nom):
     feat = feat_imp(X_test_scaled, shap_values)
     nom = nom[feat['col_name'].to_list()]
     nom = nom.select_dtypes(exclude = 'object')
-    choix = st.selectbox("Choix des features les plus importantes", nom["col_name"])
+    choix = st.selectbox("Choix des features les plus importantes", nom.columns)
     var = feat[feat["col_name"] == choix]
     return var.index[0]
 
