@@ -51,7 +51,7 @@ def feat_imp(X_test_scaled, shap_values):
 
 # Statut globale
 # Cinquième chapitre
-def fc_global(X_test_scaled, nom, X_train_scaled, choix) :
+def fc_global(X_test_scaled, X_test, X_train_scaled, nom) :
     st.markdown("## Cinquième chapitre : Features global et features local")
     # Entraînement
     explainer = shap.Explainer(load_model())
