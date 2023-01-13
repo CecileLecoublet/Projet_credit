@@ -15,6 +15,14 @@ def load_model():
     clf = pickle.load(pickle_in)
     return clf
 
+# Choix du features pour le shap et division des data
+def choix_client(X_test_scaled, shap_values):
+    feat = feat_imp(X_test_scaled, shap_values)
+    # Sélection du client et division des data
+    choix = st.selectbox("Choix du client", feat["col_name"])
+    var = feat[feat["col_name"] == choix]
+    return var
+
 # Shap garphique
 def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y):
     cmap=sns.diverging_palette(260, 10, sep=1, as_cmap=True) #seaborn palette
@@ -24,7 +32,18 @@ def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y
     ax.scatter(overlay_x, overlay_y, color='black', s=50)
     plt.xlabel(col)
     plt.ylabel("SHAP value for " + col)
-    st.pyplot(f)    
+    st.pyplot(f)
+
+# Shap la liste des features des plus importantes
+def feat_imp(X_test_scaled, shap_values):
+    feature_names = X_test_scaled.columns
+    rf_resultX = pd.DataFrame(shap_values[0], columns = feature_names)
+    vals = np.abs(rf_resultX.values).mean(0)
+    shap_importance = pd.DataFrame(list(zip(feature_names, vals)),
+                                    columns=['col_name','feature_importance_vals'])
+    shap_importance.sort_values(by=['feature_importance_vals'],
+                                ascending=False, inplace=True)
+    return shap_importance.head(20)
 
 # Statut globale
 # Cinquième chapitre
@@ -42,6 +61,7 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
     j = 0
     X_train = X_train_scaled[0:122]
     shap_values_train = explainer.shap_values(X_train_scaled)
+    position = choix_client(X_test_scaled, shap_values)
     for i in range(0, len(imp_cols)):
         #plot the top var and color by the 2nd var
         if i == 0 : 
@@ -49,6 +69,4 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, choix) :
             X_train, 
             shap_values_train[0][i],
             X_test_scaled.iloc[j,:][imp_cols[i]], 
-            shap_values[0][i][0])
-
-    
+            shap_values[0][i][position])
