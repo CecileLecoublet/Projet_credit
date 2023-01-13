@@ -27,7 +27,7 @@ def choix_var(X_test_scaled, shap_values, nom):
     #choix_2 = st.selectbox("Choix des features les plus importantes", nom.columns[nom.columns != choix])
     var = feat[feat["col_name"] == choix]
     #var_2 = feat[feat["col_name"] == choix_2]
-    position = nom.columns.get_loc("choix")
+    position = X_test_scaled.columns.get_loc("choix")
     return position
 
 # Shap garphique
@@ -68,7 +68,7 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom) :
     j = 0
     X_train = X_train_scaled[0:122]
     shap_values_train = explainer.shap_values(X_train_scaled)
-    feat, position_1 = choix_var(X_test_scaled, shap_values, nom)
+    position_1 = choix_var(X_test_scaled, shap_values, nom)
     for i in range(0, len(imp_cols)):
         #plot the top var and color by the 2nd var
         if i == 0 : 
