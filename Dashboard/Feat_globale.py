@@ -54,8 +54,8 @@ def feat_imp(X_test_scaled, shap_values):
                                 ascending=False, inplace=True)
     return shap_importance.head(20)
 
-def feat_cat(X_test_scaled, num):
-    return(st.write(X_test_scaled[X_test_scaled["SK_ID_CURR"] == num]))
+def feat_cat(X_test, num):
+    return(st.write(X_test[X_test["SK_ID_CURR"] == num]))
 
 # Statut globale
 # Cinquième chapitre
@@ -85,4 +85,4 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
     X_test_scaled.iloc[j,:][imp_cols[i]], 
     shap_values[0][position_1][i])
     st.markdown("### 5.3 : Graphique camembert")
-    feat_cat(X_test_scaled, numero)
+    feat_cat(nom, numero)
