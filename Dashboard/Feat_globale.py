@@ -68,8 +68,7 @@ def feat_cat(X_test, num):
     zeros[j] = 1
     fig = go.Figure(data=[go.Pie(labels = X_test["OCCUPATION_TYPE"].value_counts().keys(),
                             values = X_test["OCCUPATION_TYPE"].value_counts().values,
-                            pull = zeros,
-                            width=400, height=400)])
+                            pull = zeros)])
     st.write(fig)
 
 # Statut globale
