@@ -63,6 +63,8 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
     occ = X_test[X_test["SK_ID_CURR"] == num]
     liste = X_test[colonne].value_counts().keys()
     liste = liste.sort_values()
+    if len(liste) == 2:
+        st.write(colonne, " : ", occ[colonne])
     taille = len(np.unique(X_test[colonne]))
     zeros = np.zeros(taille)
     j = 0
