@@ -24,9 +24,12 @@ def choix_var(X_test_scaled, shap_values, nom):
     nom = nom[feat['col_name'].to_list()]
     nom = nom.select_dtypes(exclude = 'object')
     choix = st.selectbox("Choix des features les plus importantes", nom.columns)
-    choix_2 = st.selectbox("Choix des features les plus importantes", nom.columns[nom.columns != choix])
     position = X_test_scaled.columns.get_loc(choix)
-    return position, choix, choix_2
+    if st.button('Ajout des Features'):
+        return position, choix, choix
+    else:
+        choix_2 = st.selectbox("Choix des features les plus importantes", nom.columns[nom.columns != choix])
+        return position, choix, choix_2
 
 # Shap garphique
 def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y):
