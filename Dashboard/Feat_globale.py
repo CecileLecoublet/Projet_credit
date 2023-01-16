@@ -67,8 +67,11 @@ def feat_cat(X_test, num):
             break
         j = j + 1
     zeros[j] = 1
+    test = X_test.sort_values(by = "OCCUPATION_TYPE")
+    test = test["OCCUPATION_TYPE"]
+    val = test.value_counts(sort = False)
     fig = go.Figure(data=[go.Pie(labels = liste,
-                            values = X_test["OCCUPATION_TYPE"].value_counts().values,
+                            values = val.values,
                             pull = zeros)])
     st.write(fig)
 
