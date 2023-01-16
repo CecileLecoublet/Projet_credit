@@ -72,10 +72,7 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
     shap_values_train = explainer.shap_values(X_train_scaled)
     position_1, choix, choix_2 = choix_var(X_test_scaled, shap_values, nom)
     #plot the top var and color by the 2nd var
-    st.write(numero)
-    i = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index
-    st.write(X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero])
-    st.write(i)
+    i = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index[0]
     fig = dep_plt(i, choix, choix_2, 
     X_train, 
     shap_values_train[0][i],
