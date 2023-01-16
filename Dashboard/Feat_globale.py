@@ -69,7 +69,7 @@ def feat_cat(X_test, num):
     fig = go.Figure(data=[go.Pie(labels = X_test["OCCUPATION_TYPE"].value_counts().keys(),
                             values = X_test["OCCUPATION_TYPE"].value_counts().values,
                             pull = zeros)])
-    st.pyplot(fig)
+    st.write(fig)
 
 # Statut globale
 # Cinquième chapitre
@@ -98,5 +98,5 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
     shap_values_train[0][i],
     X_test_scaled.iloc[j,:][imp_cols[i]], 
     shap_values[0][position_1][i])
-    st.markdown("### 5.3 : Graphique camembert")
+    st.markdown("### 5.3 : Graphique catégorielle")
     feat_cat(nom, numero)
