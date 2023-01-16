@@ -57,7 +57,8 @@ def feat_imp(X_test_scaled, shap_values):
 
 def feat_cat(X_test, num):
     occ = X_test[X_test["SK_ID_CURR"] == num]
-    liste = np.unique(X_test["OCCUPATION_TYPE"])
+    liste = X_test["OCCUPATION_TYPE"].value_counts().keys()
+    liste = liste.sort_values()
     taille = len(np.unique(X_test["OCCUPATION_TYPE"]))
     zeros = np.zeros(taille)
     j = 0
@@ -66,7 +67,7 @@ def feat_cat(X_test, num):
             break
         j = j + 1
     zeros[j] = 1
-    fig = go.Figure(data=[go.Pie(labels = X_test["OCCUPATION_TYPE"].value_counts().keys(),
+    fig = go.Figure(data=[go.Pie(labels = liste,
                             values = X_test["OCCUPATION_TYPE"].value_counts().values,
                             pull = zeros)])
     st.write(fig)
