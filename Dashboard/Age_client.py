@@ -23,7 +23,7 @@ def metier_client(tab_1, num) :
             break
         k = k + 1
     
-    return(st.write(statut_fr[k]))
+    return(st.write("Le métier du client est : " , statut_fr[k]))
 
 # Age du client et appelle nom client pour avoir le métier
 # Deuxième chapitre
