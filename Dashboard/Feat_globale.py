@@ -58,7 +58,7 @@ def feat_imp(X_test_scaled, shap_values):
 def feat_cat(X_test, num, X_test_scaled, shap_values):
     feat = feat_imp(X_test_scaled, shap_values)
     st.write(feat)
-    nom = nom[feat['col_name'].to_list()]
+    nom = X_test[feat['col_name'].to_list()]
     st.write(nom)
     col = nom.select_dtypes(include = 'object')
     colonne = st.selectbox("Valeur catégorielle : ", col.columns)
