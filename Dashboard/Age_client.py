@@ -17,13 +17,13 @@ def metier_client(tab_1, num) :
                 'Personnel de sécurité', 'Personnel technique hautement qualifié', 'Personnel de serveurs/barmans',
                 'Ouvriers peu qualifiés', 'Agents immobiliers', 'Secrétaires', 'Le personnel informatique', 'RH']
     # Sélection du satut en français
+    k = 0
     for i in statut_en:
-        if tab_1["OCCUPATION_TYPE"].values == i:
-            # st.write("Le client travaille dans :", statut_fr[i])
-            st.write(i)
-            st.write(i.index)
+        if occ["OCCUPATION_TYPE"].values == i:
+            break
+        k = k + 1
     
-    return(st.write(occ["OCCUPATION_TYPE"]))
+    return(statut_fr[k])
 
 # Age du client et appelle nom client pour avoir le métier
 # Deuxième chapitre
