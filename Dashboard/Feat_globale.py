@@ -54,10 +54,14 @@ def feat_imp(X_test_scaled, shap_values):
                                 ascending=False, inplace=True)
     return shap_importance.head(20)
 
+def feat_cat(X_test_scaled, num):
+    return(st.write(X_test_scaled[X_test_scaled["SK_ID_CURR"] == num]))
+
 # Statut globale
 # Cinquième chapitre
 def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
     st.markdown("## Cinquième chapitre : Features global et features local")
+    st.markdown("### 5.1 : Features local")
     # Entraînement
     explainer = shap.Explainer(load_model())
     # Calculates the SHAP values - It takes some time
@@ -66,6 +70,8 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
     st.set_option('deprecation.showPyplotGlobalUse', False)
     fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
     st.pyplot(fig)
+    # Nuage graphique, choix des colonnes
+    st.markdown("### 5.2 : Shap dependence plot")
     imp_cols = X_train_scaled.abs().mean().sort_values(ascending=False).index.tolist()
     j = 0
     X_train = X_train_scaled[0:122]
@@ -78,3 +84,5 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
     shap_values_train[0][i],
     X_test_scaled.iloc[j,:][imp_cols[i]], 
     shap_values[0][position_1][i])
+    st.markdown("### 5.3 : Graphique camembert")
+    feat_cat(X_test_scaled, numero)
