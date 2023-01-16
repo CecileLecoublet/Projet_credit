@@ -86,8 +86,8 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
     # fig.update_layout(showlegend=True,
     #                      height=600,
     #                      margin={'l': 20, 'r': 60, 't': 0, 'b': 0})
-    fig.update_layout(height=500, width=500,
-                      margin={'l': 0, 'r': 0, 't': 0, 'b': 0},
+    fig.update_layout(height=500, width=300,
+                      margin={'l': 20, 'r': 20, 't': 0, 'b': 0},
                       legend=dict(yanchor="top",
                           y=0.99, xanchor="right", x=0.99),
                       barmode='stack')
