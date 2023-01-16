@@ -84,7 +84,7 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
     fig.update_traces(marker=dict(line=dict(width=0.5)))
     fig.update_traces(textposition='inside')
     fig.update_layout(uniformtext_minsize=15, uniformtext_mode='hide')
-    st.write(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 # Statut globale
 # Cinquième chapitre
