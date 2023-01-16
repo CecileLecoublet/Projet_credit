@@ -6,6 +6,7 @@ import shap
 import pickle
 import seaborn as sns
 import plotly.express as px
+import plotly.graph_objects as go
 st.set_option('deprecation.showPyplotGlobalUse', False)
 showPyplotGlobalUse = False
 
@@ -55,7 +56,20 @@ def feat_imp(X_test_scaled, shap_values):
     return shap_importance.head(20)
 
 def feat_cat(X_test, num):
-    return(st.write(X_test[X_test["SK_ID_CURR"] == num]))
+    occ = X_test[X_test["SK_ID_CURR"] == num]
+    liste = np.unique(X_test["OCCUPATION_TYPE"])
+    taille = len(np.unique(X_test["OCCUPATION_TYPE"]))
+    zeros = np.zeros(taille)
+    j = 0
+    for i in liste:
+        if occ["OCCUPATION_TYPE"].values == i:
+            break
+        j = j + 1
+    zeros[j] = 1
+    fig = go.Figure(data=[go.Pie(labels = X_test["OCCUPATION_TYPE"].value_counts().keys(),
+                            values = X_test["OCCUPATION_TYPE"].value_counts().values,
+                            pull = zeros)])
+    st.pyplot(fig)
 
 # Statut globale
 # Cinquième chapitre
