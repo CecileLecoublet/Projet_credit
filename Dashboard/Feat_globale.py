@@ -56,24 +56,26 @@ def feat_imp(X_test_scaled, shap_values):
     return shap_importance.head(20)
 
 def feat_cat(X_test, num):
+    col = X_test.select_dtypes(include = 'object')
+    colonne = st.selectbox("Valeur catégorielle : ", col.columns)
     occ = X_test[X_test["SK_ID_CURR"] == num]
     liste = X_test["OCCUPATION_TYPE"].value_counts().keys()
     liste = liste.sort_values()
-    taille = len(np.unique(X_test["OCCUPATION_TYPE"]))
+    taille = len(np.unique(X_test["colonne"]))
     zeros = np.zeros(taille)
     j = 0
     for i in liste:
-        if occ["OCCUPATION_TYPE"].values == i:
+        if occ["colonne"].values == i:
             break
         j = j + 1
     zeros[j] = 1
-    test = X_test.sort_values(by = "OCCUPATION_TYPE")
-    test = test["OCCUPATION_TYPE"]
+    test = X_test.sort_values(by = "colonne")
+    test = test["colonne"]
     val = test.value_counts(sort = False)
     fig = go.Figure(data=[go.Pie(labels = liste,
                             values = val.values,
                             pull = zeros)])
-    fig.update_layout(autosize=False, width=900, height=900,)
+    fig.update_layout(autosize=False, width=900, height=600,)
     fig.update_traces(marker=dict(line=dict(width=2)))
     st.write(fig)
 
