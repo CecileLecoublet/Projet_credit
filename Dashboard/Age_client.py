@@ -5,6 +5,7 @@ showPyplotGlobalUse = False
 # Traduction des métiers en français
 # Deuxième chapitre chapitre
 def metier_client(tab_1, num) :
+    occ = tab_1[tab_1["SK_ID_CURR"] == num]
     # Nom de statut en anglais
     statut_en = ['Laborers', 'Core staff', 'Accountants', 'Managers', 'Drivers', 'Sales staff',
                 'Cleaning staff', 'Cooking staff', 'Private service staff', 'Medicine staff',
@@ -16,10 +17,12 @@ def metier_client(tab_1, num) :
                 'Personnel de sécurité', 'Personnel technique hautement qualifié', 'Personnel de serveurs/barmans',
                 'Ouvriers peu qualifiés', 'Agents immobiliers', 'Secrétaires', 'Le personnel informatique', 'RH']
     # Sélection du satut en français
-    # for i in range(0, len(statut_en), 1):
-    #     if tab_1["OCCUPATION_TYPE"].values == i:
-    #         st.write("Le client travaille dans :", statut_fr[i])
-    occ = tab_1[tab_1["SK_ID_CURR"] == num]
+    for i in statut_en:
+        if tab_1["OCCUPATION_TYPE"].values == i:
+            # st.write("Le client travaille dans :", statut_fr[i])
+            st.write(i)
+            st.write(i.index)
+    
     return(st.write(occ["OCCUPATION_TYPE"]))
 
 # Age du client et appelle nom client pour avoir le métier
