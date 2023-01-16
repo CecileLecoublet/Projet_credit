@@ -73,6 +73,8 @@ def feat_cat(X_test, num):
     fig = go.Figure(data=[go.Pie(labels = liste,
                             values = val.values,
                             pull = zeros)])
+    fig.update_layout(autosize=False, width=900, height=900,)
+    fig.update_traces(marker=dict(line=dict(width=2)))
     st.write(fig)
 
 # Statut globale
