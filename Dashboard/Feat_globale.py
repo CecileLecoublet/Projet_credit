@@ -56,7 +56,7 @@ def feat_imp(X_test_scaled, shap_values):
 
 # Statut globale
 # Cinquième chapitre
-def fc_global(X_test_scaled, X_test, X_train_scaled, nom) :
+def fc_global(X_test_scaled, X_test, X_train_scaled, nom, choix) :
     st.markdown("## Cinquième chapitre : Features global et features local")
     # Entraînement
     explainer = shap.Explainer(load_model())
@@ -71,11 +71,10 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom) :
     X_train = X_train_scaled[0:122]
     shap_values_train = explainer.shap_values(X_train_scaled)
     position_1, choix, choix_2 = choix_var(X_test_scaled, shap_values, nom)
-    for i in range(0, len(imp_cols)):
-        #plot the top var and color by the 2nd var
-        if i == 0 : 
-            fig = dep_plt(i, choix, choix_2, 
-            X_train, 
-            shap_values_train[0][i],
-            X_test_scaled.iloc[j,:][imp_cols[i]], 
-            shap_values[0][position_1][i])
+    #plot the top var and color by the 2nd var
+    i = X_test_scaled[X_test_scaled["SK_ID_CURR"] == choix].index[0]
+    fig = dep_plt(i, choix, choix_2, 
+    X_train, 
+    shap_values_train[0][i],
+    X_test_scaled.iloc[j,:][imp_cols[i]], 
+    shap_values[0][position_1][i])
