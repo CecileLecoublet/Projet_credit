@@ -78,9 +78,12 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
     val = test.value_counts(sort = False)
     fig = go.Figure(data=[go.Pie(labels = liste,
                             values = val.values,
-                            pull = zeros)])
+                            pull = zeros,
+                            insidetextorientation='radial')])
     fig.update_layout(autosize=False, width=900, height=600,)
-    fig.update_traces(marker=dict(line=dict(width=2)))
+    fig.update_traces(marker=dict(line=dict(width=0.5)))
+    fig.update_traces(textposition='inside')
+    fig.update_layout(uniformtext_minsize=15, uniformtext_mode='hide')
     st.write(fig)
 
 # Statut globale
