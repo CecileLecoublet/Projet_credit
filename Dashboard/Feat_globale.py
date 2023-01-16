@@ -85,7 +85,7 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
     fig.update_traces(textposition='inside')
     fig.update_layout(uniformtext_minsize=15, uniformtext_mode='hide')
     fig.update_layout(showlegend=True,
-                         height=200,
+                         height=600,
                          margin={'l': 20, 'r': 60, 't': 0, 'b': 0})
     st.plotly_chart(fig, use_container_width=True)
 
