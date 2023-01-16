@@ -80,10 +80,13 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
                             values = val.values,
                             pull = zeros,
                             insidetextorientation='radial')])
-    fig.update_layout(autosize=False, width=900, height=600,)
+    #fig.update_layout(autosize=False, width=900, height=600,)
     fig.update_traces(marker=dict(line=dict(width=0.5)))
     fig.update_traces(textposition='inside')
     fig.update_layout(uniformtext_minsize=15, uniformtext_mode='hide')
+    fig.update_layout(showlegend=False,
+                         height=200,
+                         margin={'l': 20, 'r': 60, 't': 0, 'b': 0})
     st.plotly_chart(fig, use_container_width=True)
 
 # Statut globale
