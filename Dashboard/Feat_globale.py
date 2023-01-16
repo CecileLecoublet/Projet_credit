@@ -55,8 +55,10 @@ def feat_imp(X_test_scaled, shap_values):
                                 ascending=False, inplace=True)
     return shap_importance.head(20)
 
-def feat_cat(X_test, num):
-    col = X_test.select_dtypes(include = 'object')
+def feat_cat(X_test, num, X_test_scaled, shap_values):
+    feat = feat_imp(X_test_scaled, shap_values)
+    nom = nom[feat['col_name'].to_list()]
+    col = nom.select_dtypes(include = 'object')
     colonne = st.selectbox("Valeur catégorielle : ", col.columns)
     occ = X_test[X_test["SK_ID_CURR"] == num]
     liste = X_test[colonne].value_counts().keys()
@@ -107,4 +109,4 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
     X_test_scaled.iloc[j,:][imp_cols[i]], 
     shap_values[0][position_1][i])
     st.markdown("### 5.3 : Graphique catégorielle")
-    feat_cat(nom, numero)
+    feat_cat(nom, numero, X_test_scaled, shap_values)
