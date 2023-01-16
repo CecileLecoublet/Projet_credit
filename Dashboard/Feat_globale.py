@@ -59,7 +59,7 @@ def feat_cat(X_test, num):
     col = X_test.select_dtypes(include = 'object')
     colonne = st.selectbox("Valeur catégorielle : ", col.columns)
     occ = X_test[X_test["SK_ID_CURR"] == num]
-    liste = X_test["OCCUPATION_TYPE"].value_counts().keys()
+    liste = X_test[colonne].value_counts().keys()
     liste = liste.sort_values()
     taille = len(np.unique(X_test[colonne]))
     zeros = np.zeros(taille)
