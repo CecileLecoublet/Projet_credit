@@ -80,15 +80,13 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
                             values = val.values,
                             pull = zeros,
                             insidetextorientation='radial')])
-    # fig.update_traces(marker=dict(line=dict(width=0.5)))
-    # fig.update_traces(textposition='inside')
-    # fig.update_layout(uniformtext_minsize=15, uniformtext_mode='hide')
-    # fig.update_layout(showlegend=True,
-    #                      height=600,
-    #                      margin={'l': 20, 'r': 60, 't': 0, 'b': 0})
-    fig.update_layout(height=500, width=500,
-                      margin={'l': 20, 'r': 60, 't': 0, 'b': 0},
-                      legend=dict(yanchor="top",
+    fig.update_traces(marker=dict(line=dict(width=0.5)))
+    fig.update_traces(textposition='inside')
+    fig.update_layout(uniformtext_minsize=15, uniformtext_mode='hide')
+    fig.update_layout(showlegend=True,
+                         height=600,
+                         margin={'l': 20, 'r': 60, 't': 0, 'b': 0})
+    fig.update_layout(legend=dict(yanchor="top",
                           y=0.99, xanchor="left", x=0.99),
                       barmode='stack')
     st.plotly_chart(fig, use_container_width=True)
