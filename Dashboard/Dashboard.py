@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     # Deuxième chapitre
     # Âge et métier
-    age_client(tab_1)
+    age_client(nom, choix)
 
     # Troisème chapitre
     # Information client credit    
