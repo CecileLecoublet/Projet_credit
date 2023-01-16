@@ -89,7 +89,7 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
     fig.update_layout(height=500, width=300,
                       margin={'l': 20, 'r': 60, 't': 0, 'b': 0},
                       legend=dict(yanchor="top",
-                          y=0.99, xanchor="right", x=0.99),
+                          y=0.99, xanchor="left", x=0.99),
                       barmode='stack')
     st.plotly_chart(fig, use_container_width=True)
 
