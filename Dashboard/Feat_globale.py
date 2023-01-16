@@ -61,16 +61,16 @@ def feat_cat(X_test, num):
     occ = X_test[X_test["SK_ID_CURR"] == num]
     liste = X_test["OCCUPATION_TYPE"].value_counts().keys()
     liste = liste.sort_values()
-    taille = len(np.unique(X_test["colonne"]))
+    taille = len(np.unique(X_test[colonne]))
     zeros = np.zeros(taille)
     j = 0
     for i in liste:
-        if occ["colonne"].values == i:
+        if occ[colonne].values == i:
             break
         j = j + 1
     zeros[j] = 1
-    test = X_test.sort_values(by = "colonne")
-    test = test["colonne"]
+    test = X_test.sort_values(by = colonne)
+    test = test[colonne]
     val = test.value_counts(sort = False)
     fig = go.Figure(data=[go.Pie(labels = liste,
                             values = val.values,
