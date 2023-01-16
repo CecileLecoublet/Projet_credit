@@ -64,7 +64,7 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
     liste = X_test[colonne].value_counts().keys()
     liste = liste.sort_values()
     if len(liste) == 2:
-        st.write(colonne, " : ", occ[colonne].values)
+        st.write(colonne, " : ", occ[colonne].values[0])
     taille = len(np.unique(X_test[colonne]))
     zeros = np.zeros(taille)
     j = 0
