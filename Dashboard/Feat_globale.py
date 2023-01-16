@@ -25,7 +25,8 @@ def choix_var(X_test_scaled, shap_values, nom):
     nom = nom.select_dtypes(exclude = 'object')
     choix = st.selectbox("Choix des features les plus importantes", nom.columns)
     position = X_test_scaled.columns.get_loc(choix)
-    if st.button('Ajout des Features'):
+    quest = st.radio("Une autre features : ", ('Oui', 'Non'))
+    if quest == 'Oui':
         return position, choix, choix
     else:
         choix_2 = st.selectbox("Choix des features les plus importantes", nom.columns[nom.columns != choix])
