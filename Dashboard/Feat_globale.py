@@ -25,7 +25,7 @@ def choix_var(X_test_scaled, shap_values, nom):
     nom = nom.select_dtypes(exclude = 'object')
     choix = st.selectbox("Choix des features les plus importantes", nom.columns)
     position = X_test_scaled.columns.get_loc(choix)
-    quest = st.radio("Une autre features : ", ('Oui', 'Non'))
+    quest = st.radio("Ajout d'une colonne ? : ", ('Oui', 'Non'))
     if quest == 'Oui':
         return position, choix, choix
     else:
@@ -78,4 +78,4 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom) :
             X_train, 
             shap_values_train[0][i],
             X_test_scaled.iloc[j,:][imp_cols[i]], 
-            shap_values[0][i][position_1])
+            shap_values[0][position_1][i])
