@@ -71,18 +71,19 @@ def dep_plt(i, col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y
 
 # Préparation deplusieurs shap pour la créaion du nuage de point
 def prep_dep(X_train_scaled, X_test_scaled, explainer, shap_values, nom, numero):
-    imp_cols = X_train_scaled.abs().mean().sort_values(ascending=False).index.tolist()
-    j = 0
-    X_train = X_train_scaled[0:122]
-    shap_values_train = explainer.shap_values(X_train_scaled)
+    # imp_cols = X_train_scaled.abs().mean().sort_values(ascending=False).index.tolist()
+    # j = 0
+    # X_train = X_train_scaled[0:122]
+    # shap_values_train = explainer.shap_values(X_train_scaled)
     position_1, choix, choix_2 = choix_var(X_test_scaled, shap_values, nom)
-    #plot the top var and color by the 2nd var
-    i = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index[0]
-    dep_plt(i, choix, choix_2, 
-                X_train, 
-                shap_values_train[0][i],
-                X_test_scaled.iloc[j,:][imp_cols[i]], 
-                shap_values[0][position_1][i])
+    # #plot the top var and color by the 2nd var
+    # i = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index[0]
+    # dep_plt(i, choix, choix_2, 
+    #             X_train, 
+    #             shap_values_train[0][i],
+    #             X_test_scaled.iloc[j,:][imp_cols[i]], 
+    #             shap_values[0][position_1][i])
+    shap.dependence_plot(choix, shap_values[0], X_test_scaled)
 
 # Shap variable catégorielle, affichage en go.Pie
 def feat_cat(X_test, num, X_test_scaled, shap_values):
