@@ -135,10 +135,16 @@ def feat_cat(X_test, num, X_test_scaled, shap_values):
 def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
     st.markdown("## Cinquième chapitre : Features global et features local")
     st.markdown("### 5.1 : Features local")
+    st.markdown("Ici, on a les 20 features importantes pour déterminer si un client est à risque\
+                ou pas. Pour les chapitres suivants on divisera les différentes catégories selon\
+                les types de variables.")
     # Chargement du modèle shap
     explainer, shap_values = shap_model(X_test_scaled)
     # Nuage graphique, choix des colonnes
     st.markdown("### 5.2 : Shap dependence plot")
+    st.markdown("Les variables représentent les clients par rapport aux autres clients.")
     prep_dep(X_train_scaled, X_test_scaled, explainer, shap_values, nom, numero)
     st.markdown("### 5.3 : Graphique catégorielle")
+    st.markdown("Pour les variables catégorielles, on les affiche dans un camembert,\
+                et on les affiche selon les catégories.")
     feat_cat(nom, numero, X_test_scaled, shap_values)

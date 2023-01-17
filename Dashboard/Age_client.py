@@ -29,6 +29,7 @@ def metier_client(tab_1, num) :
 # Deuxième chapitre
 def age_client(tab_1, num):
     st.markdown("## Deuxième chapitre : Statut du client")
+    st.markdown("Les informations de bases des clients : l'âge et sa catégorie de travail.")
     # Sélection âge, réduction du nombre et "age.values[0]" pour que l'âge tienne sur une ligne
     tab_1 = tab_1[tab_1["SK_ID_CURR"] == num]
     age = tab_1['DAYS_BIRTH'].round(0)
