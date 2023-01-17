@@ -78,9 +78,8 @@ def prep_dep(X_train_scaled, X_test_scaled, explainer, shap_values, nom, numero)
     position_1, choix, choix_2 = choix_var(X_test_scaled, shap_values, nom)
     #plot the top var and color by the 2nd var
     i = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index[0]
-    st.write(choix)
     dep_plt(choix, choix_2, X_train_scaled, 
-            test[choix], X_test_scaled.iloc[j,:][imp_cols[i]], 
+            test[position_1], X_test_scaled.iloc[j,:][imp_cols[i]], 
             shap_values[0][position_1][i])
 
 # Shap variable catégorielle, affichage en go.Pie
