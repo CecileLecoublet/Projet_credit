@@ -35,7 +35,7 @@ def lime_model(X_train_smote, X_test_scaled):
     plt.rcParams["figure.figsize"] = (30, 30)
 
     exp = explainer.explain_instance(
-    data_row = X_test_scaled.iloc[212], 
+    data_row = X_test_scaled.iloc[0], 
     predict_fn = load_model().predict_proba)
 
     exp.show_in_notebook(show_table=True)
