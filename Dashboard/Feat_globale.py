@@ -67,7 +67,7 @@ def dep_plt(col, color_by, base_actual_df, base_shap_df, overlay_x, overlay_y):
     ax.scatter(overlay_x, overlay_y, color='black', s=50)
     plt.xlabel(col)
     plt.ylabel("SHAP value for " + col)
-    st.plotly_chart(f)
+    st.pyplot(f)
 
 # Préparation deplusieurs shap pour la créaion du nuage de point
 def prep_dep(X_train_scaled, X_test_scaled, explainer, shap_values, nom, numero):
