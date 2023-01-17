@@ -38,8 +38,10 @@ def lime_model(X_train_smote, X_test_scaled):
     data_row = X_test_scaled.iloc[0], 
     predict_fn = load_model().predict_proba)
 
-    exp.show_in_notebook(show_table=True)
-    st.write(exp)
+    exp.as_pyplot_figure()
+    st.pyplot()
+    plt.clf()
+    st.markdown(exp.as_html(), unsafe_allow_html=True)
 
 # Shap la liste des features des plus importantes
 # On récupère les 20 features importantes
