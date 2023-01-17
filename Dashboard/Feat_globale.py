@@ -32,15 +32,11 @@ def lime_model(X_train_smote, X_test_scaled):
         feature_names=X_train_smote.columns,
         class_names=['Positif', 'Negatif'],
         mode='classification')
-    plt.rcParams["figure.figsize"] = (30, 30)
-
     exp = explainer.explain_instance(
     data_row = X_test_scaled.iloc[0], 
     predict_fn = load_model().predict_proba)
-
     exp.as_pyplot_figure()
     st.pyplot()
-    plt.clf()
 
 # Shap la liste des features des plus importantes
 # On récupère les 20 features importantes
