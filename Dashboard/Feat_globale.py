@@ -27,7 +27,7 @@ def shap_model(X_test_scaled):
     return(explainer, shap_values)
 
 def lime_model(X_train_smote, X_test_scaled, numero):
-    num = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero]
+    num = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index[0]
     st.write(num)
     explainer = lime_tabular.LimeTabularExplainer(
         training_data=np.array(X_train_smote),
