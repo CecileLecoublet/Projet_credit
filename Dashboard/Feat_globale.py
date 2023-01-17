@@ -28,14 +28,13 @@ def shap_model(X_test_scaled):
 
 def lime_model(X_train_smote, X_test_scaled, numero):
     num = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index[0]
-    st.write(num)
     explainer = lime_tabular.LimeTabularExplainer(
         training_data=np.array(X_train_smote),
         feature_names=X_train_smote.columns,
         class_names=['Positif', 'Negatif'],
         mode='classification')
     exp = explainer.explain_instance(
-    data_row = X_test_scaled.iloc[0], 
+    data_row = X_test_scaled.iloc[num], 
     predict_fn = load_model().predict_proba)
     exp.as_pyplot_figure()
     st.pyplot()
