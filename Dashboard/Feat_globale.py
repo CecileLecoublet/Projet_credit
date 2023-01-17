@@ -41,7 +41,6 @@ def lime_model(X_train_smote, X_test_scaled):
     exp.as_pyplot_figure()
     st.pyplot()
     plt.clf()
-    st.markdown(exp.as_html(), unsafe_allow_html=True)
 
 # Shap la liste des features des plus importantes
 # On récupère les 20 features importantes
