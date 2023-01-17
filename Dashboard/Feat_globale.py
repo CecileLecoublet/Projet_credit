@@ -39,7 +39,7 @@ def lime_model(X_train_smote, X_test_scaled):
     predict_fn = load_model().predict_proba)
 
     exp.show_in_notebook(show_table=True)
-    st.pyplot(exp)
+    st.plotly_chart(exp)
 
 # Shap la liste des features des plus importantes
 # On récupère les 20 features importantes
