@@ -7,6 +7,8 @@ import pickle
 import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
+import lime
+from lime import lime_tabular
 st.set_option('deprecation.showPyplotGlobalUse', False)
 showPyplotGlobalUse = False
 
@@ -22,11 +24,22 @@ def shap_model(X_test_scaled):
     explainer = shap.Explainer(load_model())
     # Calculates the SHAP values - It takes some time
     shap_values = explainer.shap_values(X_test_scaled)
-    # Evaluate SHAP values
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    fig = shap.summary_plot(shap_values[0], X_test_scaled, plot_type="bar")
-    st.pyplot(fig)
     return(explainer, shap_values)
+
+def lime_model(X_train_smote, X_test_scaled):
+    explainer = lime_tabular.LimeTabularExplainer(
+        training_data=np.array(X_train_smote),
+        feature_names=X_train_smote.columns,
+        class_names=['Positif', 'Negatif'],
+        mode='classification')
+    plt.rcParams["figure.figsize"] = (30, 30)
+
+    exp = explainer.explain_instance(
+    data_row = X_test_scaled.iloc[212], 
+    predict_fn = load_model().predict_proba)
+
+    exp.show_in_notebook(show_table=True)
+    st.pyplot(exp)
 
 # Shap la liste des features des plus importantes
 # On récupère les 20 features importantes
@@ -140,6 +153,7 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
                 les types de variables.")
     # Chargement du modèle shap
     explainer, shap_values = shap_model(X_test_scaled)
+    lime_model(X_train_scaled, X_test_scaled)
     # Nuage graphique, choix des colonnes
     st.markdown("### 5.2 : Shap dependence plot")
     st.markdown("Les variables représentent les clients par rapport aux autres clients.")
