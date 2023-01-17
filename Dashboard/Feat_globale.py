@@ -26,7 +26,9 @@ def shap_model(X_test_scaled):
     shap_values = explainer.shap_values(X_test_scaled)
     return(explainer, shap_values)
 
-def lime_model(X_train_smote, X_test_scaled):
+def lime_model(X_train_smote, X_test_scaled, numero):
+    num = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero]
+    st.write(num)
     explainer = lime_tabular.LimeTabularExplainer(
         training_data=np.array(X_train_smote),
         feature_names=X_train_smote.columns,
@@ -150,7 +152,7 @@ def fc_global(X_test_scaled, X_test, X_train_scaled, nom, numero) :
                 les types de variables.")
     # Chargement du modèle shap
     explainer, shap_values = shap_model(X_test_scaled)
-    lime_model(X_train_scaled, X_test_scaled)
+    lime_model(X_train_scaled, X_test_scaled, numero)
     # Nuage graphique, choix des colonnes
     st.markdown("### 5.2 : Shap dependence plot")
     st.markdown("Les variables représentent les clients par rapport aux autres clients.")
