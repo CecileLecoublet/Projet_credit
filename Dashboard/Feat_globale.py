@@ -28,8 +28,8 @@ def shap_model(X_test_scaled):
 
 # Affichage des 20 features les plus importantes
 def lime_model(X_train_smote, X_test_scaled, numero):
-    color = st.color_picker('Negatif', '#0066cc')
-    color = st.color_picker('Negatif', '#33ff33')
+    color = st.color_picker('Negatif', '#FF0000')
+    color = st.color_picker('Positif', '#008000')
     num = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index[0]
     explainer = lime_tabular.LimeTabularExplainer(
         training_data=np.array(X_train_smote),
