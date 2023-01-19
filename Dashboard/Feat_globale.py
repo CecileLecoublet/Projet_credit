@@ -9,7 +9,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import lime
 from lime import lime_tabular
-import streamlit.components.v1 as components
 st.set_option('deprecation.showPyplotGlobalUse', False)
 showPyplotGlobalUse = False
 
@@ -19,7 +18,7 @@ def load_model():
     clf = pickle.load(pickle_in)
     return clf
 
-# Affichage des 20 features les plus importantes
+# Enregistrement des 20 features les plus importantes
 def shap_model(X_test_scaled):
     # Entraînement
     explainer = shap.Explainer(load_model())
@@ -27,15 +26,21 @@ def shap_model(X_test_scaled):
     shap_values = explainer.shap_values(X_test_scaled)
     return(explainer, shap_values)
 
+# Affichage des 20 features les plus importantes
 def lime_model(X_train_smote, X_test_scaled, numero):
+    color = st.color_picker('Negatif', 'blue')
+    color = st.color_picker('Negatif', 'orange')
     num = X_test_scaled[X_test_scaled["SK_ID_CURR"] == numero].index[0]
     explainer = lime_tabular.LimeTabularExplainer(
         training_data=np.array(X_train_smote),
         feature_names=X_train_smote.columns,
         class_names=['Negatif', 'Positif'],
         mode='classification')
-    exp = explainer.explain_instance(load_model().predict_proba, num_features=10)
-    components.html(exp.as_html(), height=800)
+    exp = explainer.explain_instance(
+    data_row = X_test_scaled.iloc[num], 
+    predict_fn = load_model().predict_proba)
+    exp.as_pyplot_figure()
+    st.pyplot()
 
 # Shap la liste des features des plus importantes
 # On récupère les 20 features importantes
