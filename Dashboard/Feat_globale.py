@@ -31,8 +31,9 @@ def lime_model(X_train_smote, X_test_scaled, numero):
     explainer = lime_tabular.LimeTabularExplainer(
         training_data=np.array(X_train_smote),
         feature_names=X_train_smote.columns,
-        class_names=['Positif', 'Negatif'],
+        class_names=['Negatif', 'Positif'],
         mode='classification')
+    exp.show_in_notebook(show_table=True)
     exp = explainer.explain_instance(
     data_row = X_test_scaled.iloc[num], 
     predict_fn = load_model().predict_proba)
