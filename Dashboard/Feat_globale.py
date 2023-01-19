@@ -36,8 +36,8 @@ def lime_model(X_train_smote, X_test_scaled, numero):
     exp = explainer.explain_instance(
     data_row = X_test_scaled.iloc[num], 
     predict_fn = load_model().predict_proba)
-    exp.show_in_notebook(show_table=True)
-    exp.as_pyplot_figure()
+    exp.show_in_notebook(show_table=True).as_pyplot_figure()
+    #exp.as_pyplot_figure()
     st.pyplot()
 
 # Shap la liste des features des plus importantes
