@@ -9,6 +9,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import lime
 from lime import lime_tabular
+import streamlit.components.v1 as components
 st.set_option('deprecation.showPyplotGlobalUse', False)
 showPyplotGlobalUse = False
 
@@ -33,12 +34,8 @@ def lime_model(X_train_smote, X_test_scaled, numero):
         feature_names=X_train_smote.columns,
         class_names=['Negatif', 'Positif'],
         mode='classification')
-    exp = explainer.explain_instance(
-    data_row = X_test_scaled.iloc[num], 
-    predict_fn = load_model().predict_proba)
-    exp.show_in_notebook(show_table=True).as_pyplot_figure()
-    #exp.as_pyplot_figure()
-    st.pyplot()
+    exp = explainer.explain_instance(load_model().predict_proba, num_features=10)
+    components.html(exp.as_html(), height=800)
 
 # Shap la liste des features des plus importantes
 # On récupère les 20 features importantes
