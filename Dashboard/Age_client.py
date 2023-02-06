@@ -4,8 +4,7 @@ showPyplotGlobalUse = False
 
 # Traduction des métiers en français
 # Deuxième chapitre chapitre
-def metier_client(tab_1, num) :
-    occ = tab_1[tab_1["SK_ID_CURR"] == num]
+def metier_client(tab, num, metier) :
     # Nom de statut en anglais
     statut_en = ['Laborers', 'Core staff', 'Accountants', 'Managers', 'Drivers', 'Sales staff',
                 'Cleaning staff', 'Cooking staff', 'Private service staff', 'Medicine staff',
@@ -19,7 +18,7 @@ def metier_client(tab_1, num) :
     # Sélection du satut en français
     k = 0
     for i in statut_en:
-        if occ["OCCUPATION_TYPE"].values == i:
+        if tab["OCCUPATION_TYPE"].values == i:
             break
         k = k + 1
     
@@ -27,9 +26,9 @@ def metier_client(tab_1, num) :
 
 # Age du client et appelle nom client pour avoir le métier
 # Deuxième chapitre
-def age_client(tab_1, num, age):
+def age_client(tab, num, age, metier):
     st.markdown("## Deuxième chapitre : Statut du client")
     st.markdown("Les informations de bases des clients : l'âge et sa catégorie de travail.")
     # Sélection âge, réduction du nombre et "age.values[0]" pour que l'âge tienne sur une ligne
     st.write("L'âge du client est : ", age)
-    metier_client(tab_1, num)
+    metier_client(tab, num, metier)
