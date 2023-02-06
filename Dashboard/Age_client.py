@@ -18,7 +18,7 @@ def metier_client(tab, num, metier) :
     # Sélection du satut en français
     k = 0
     for i in statut_en:
-        if tab["OCCUPATION_TYPE"].values == i:
+        if metier.values == i:
             break
         k = k + 1
     

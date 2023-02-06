@@ -70,9 +70,9 @@ if __name__ == '__main__':
     # Âge et métier
     age = tab_1["DAYS_BIRTH"].round(0)
     st.write(nom[nom["SK_ID_CURR"] == choix])
-    truc = nom[nom["SK_ID_CURR"] == choix]
-    st.write(truc["OCCUPATION_TYPE"])
-    #age_client(nom, choix, age, metier)
+    metier = nom[nom["SK_ID_CURR"] == choix]
+    st.write(metier["OCCUPATION_TYPE"])
+    age_client(nom, choix, age, metier)
 
     # Troisème chapitre
     # Information client credit    
