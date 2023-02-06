@@ -58,7 +58,6 @@ if __name__ == '__main__':
     tab, df, X_train_scaled, nom = ouverture_data()
     df = df.sort_values("SK_ID_CURR")
     df = df.reset_index(drop=True)
-    st.write(df)
 
     # Premier chapitre
     # Choix du client
@@ -70,7 +69,7 @@ if __name__ == '__main__':
     # Deuxième chapitre
     # Âge et métier
     age = tab_1["DAYS_BIRTH"].round(0)
-    st.write(nom["SK_ID_CURR"])
+    st.write(nom[nom["SK_ID_CURR"] == choix])
     #age_client(nom, choix, age, metier)
 
     # Troisème chapitre
