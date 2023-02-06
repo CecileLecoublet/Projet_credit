@@ -61,15 +61,13 @@ if __name__ == '__main__':
     # Choix du client
     data, tab_1, choix = choix_client()
 
-    st.write(tab[tab["SK_ID_CURR"] == choix])
-    st.write(df[df["SK_ID_CURR"] == choix])
-    st.write(tab_1)
-
     # FastAPI et client à risque
     rep = client_api(data)
 
     # Deuxième chapitre
     # Âge et métier
+    age = tab_1["DAYS_BIRTH"]
+    st.write(age)
     age_client(nom, choix)
 
     # Troisème chapitre
