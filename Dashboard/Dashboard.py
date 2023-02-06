@@ -67,7 +67,8 @@ if __name__ == '__main__':
     # Deuxième chapitre
     # Âge et métier
     age = tab_1["DAYS_BIRTH"].round(0)
-    metier = nom["OCCUPATION_TYPE"]
+    metier = nom[nom["SK_ID_CURR"] == choix]
+    metier["OCCUPATION_TYPE"]
     st.write(metier)
     age_client(nom, choix, age, metier)
 
