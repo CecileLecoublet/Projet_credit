@@ -72,7 +72,7 @@ if __name__ == '__main__':
     st.write(nom[nom["SK_ID_CURR"] == choix])
     metier = nom[nom["SK_ID_CURR"] == choix]
     st.write(metier["OCCUPATION_TYPE"])
-    age_client(nom, choix, age, metier)
+    age_client(nom, choix, age, metier["OCCUPATION_TYPE"])
 
     # Troisème chapitre
     # Information client credit    
