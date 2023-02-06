@@ -63,6 +63,7 @@ if __name__ == '__main__':
 
     st.write(tab[tab["SK_ID_CURR"] == choix])
     st.write(df[df["SK_ID_CURR"] == choix])
+    st.write(tab_1)
 
     # FastAPI et client à risque
     rep = client_api(data)
