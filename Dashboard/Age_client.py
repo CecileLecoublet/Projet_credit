@@ -33,5 +33,6 @@ def age_client(tab_1, num):
     # Sélection âge, réduction du nombre et "age.values[0]" pour que l'âge tienne sur une ligne
     tab_1 = tab_1[tab_1["SK_ID_CURR"] == num]
     age = tab_1['DAYS_BIRTH'].round(0)
+    st.write(tab_1)
     st.write("L'âge du client est : ", age.values[0])
     metier_client(tab_1, num)
