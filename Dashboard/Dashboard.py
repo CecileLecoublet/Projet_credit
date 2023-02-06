@@ -60,6 +60,10 @@ if __name__ == '__main__':
     # Premier chapitre
     # Choix du client
     data, tab_1, choix = choix_client()
+
+    st.write(tab[tab["SK_ID_CURR"] == choix])
+    st.write(df[df["SK_ID_CURR"] == choix])
+
     # FastAPI et client à risque
     rep = client_api(data)
 
