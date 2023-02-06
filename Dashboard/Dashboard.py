@@ -56,7 +56,9 @@ if __name__ == '__main__':
 
     # Ouverture des data
     tab, df, X_train_scaled, nom = ouverture_data()
-    st.write(df.sort_values("SK_ID_CURR"))
+    df = df.sort_values("SK_ID_CURR")
+    df = df.reset_index(drop=True)
+    st.write(df)
 
     # Premier chapitre
     # Choix du client
