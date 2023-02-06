@@ -18,7 +18,7 @@ def metier_client(tab, num, metier) :
     # Sélection du satut en français
     k = 0
     for i in statut_en:
-        if metier == i:
+        if metier.values == i:
             break
         k = k + 1
     
@@ -31,4 +31,5 @@ def age_client(tab, num, age, metier):
     st.markdown("Les informations de bases des clients : l'âge et sa catégorie de travail.")
     # Sélection âge, réduction du nombre et "age.values[0]" pour que l'âge tienne sur une ligne
     st.write("L'âge du client est : ", age.values[0])
+    st.write(metier)
     metier_client(tab, num, metier)
